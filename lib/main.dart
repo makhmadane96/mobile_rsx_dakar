@@ -46,6 +46,19 @@ void main() {
           style: TextStyle(fontSize: 24),
         ),
       ),
+        Container(
+          alignment: Alignment.center,
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [Colors.green,Colors.white]),
+              shape: BoxShape.circle
+          ),
+          child: Text("Free Mali",
+            textDirection: TextDirection.ltr,
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
     ],)
 
   );
@@ -111,3 +124,5 @@ void main() {
       ),
     ),*/
 
+
+// Makhmadane LO iNGENIEUR EN INFORMATIQUE
