@@ -1,128 +1,102 @@
 import 'package:flutter/material.dart';
 
 void main() {
+  TextEditingController nomComplet = TextEditingController();
+  TextEditingController numero = TextEditingController();
+  List<Object> contacts = List.empty(growable: true);
   runApp(
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      textDirection: TextDirection.ltr,
-      children: [
-      Container(
-        alignment: Alignment.center,
-        height: 100,
-        width: 100,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.green,Colors.white]),
-            shape: BoxShape.circle
+      MaterialApp(
+        title: "M1 RX",
+        theme: ThemeData(
+          primarySwatch: Colors.pink
         ),
-        child: Text("Free Senegal",
-          textDirection: TextDirection.ltr,
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-        Container(
-          alignment: Alignment.center,
-          height: 100,
-          width: 100,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [Colors.green,Colors.white]),
-              shape: BoxShape.circle
+        home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.pink,
+            centerTitle: true,
+            title: Text("Liste des Contacts"),
+          ) ,
+          body: Container(
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                TextField(
+                  controller: nomComplet,
+                  style: TextStyle(fontSize: 30),
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    hintText: "Saisir Le nom complet",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10)
+                      )
+                    )
+                  ),
+                ),
+                SizedBox(height: 15),
+                TextField(
+                  controller: numero,
+                  style: TextStyle(fontSize: 30),
+                    keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "Saisir le numéro",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(10)
+                          )
+                      )
+                  ),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                        onPressed: (){
+                          String nomc=nomComplet.text;
+                          String num = numero.text;
+                          if(nomc.isNotEmpty && num.isNotEmpty){
+                            nomComplet.text = "";
+                            numero.text = "";
+                            contacts.add({"nom":nomc,"numero":num});
+                            for (var value in contacts) {
+                              print(value.toString());
+                            }
+                          }
+                        },
+                        child: Text(
+                          "Save",
+                          style: TextStyle(fontSize: 30)
+                        ),
+                        style: const ButtonStyle(
+                            padding: MaterialStatePropertyAll(EdgeInsets.all(10)),
+                            backgroundColor: MaterialStatePropertyAll(Colors.pink)
+                        )
+                    ),
+                    ElevatedButton(
+                        onPressed: (){
+                          print("Update");
+                        },
+                        child: Text(
+                            "Update",
+                            style: TextStyle(fontSize: 30)
+                        ),
+                        style: const ButtonStyle(
+                            padding: MaterialStatePropertyAll(EdgeInsets.all(10)),
+                            backgroundColor: MaterialStatePropertyAll(Colors.pink)
+                        )
+                    )
+                  ],
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "Pas de contact sur la liste",
+                  style: TextStyle(fontSize: 22),
+                )
+              ],
+            ),
           ),
-          child: Text("Free Senegal",
-            textDirection: TextDirection.ltr,
-            style: TextStyle(fontSize: 24),
-          ),
         ),
-      Container(
-        height: 100,
-        width: 100,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.green,Colors.blue]),
-            shape: BoxShape.circle
-        ),
-        child: Text("Free Senegal",
-          textDirection: TextDirection.ltr,
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-        Container(
-          alignment: Alignment.center,
-          height: 100,
-          width: 100,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [Colors.green,Colors.white]),
-              shape: BoxShape.circle
-          ),
-          child: Text("Free Mali",
-            textDirection: TextDirection.ltr,
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-    ],)
-
+      )
   );
-      }
-     /* Container(
-      color: Colors.white,
-      alignment: Alignment(0.0,0.0),
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.green,Colors.deepOrange]),
-                shape: BoxShape.circle
-        ),
-      //margin: EdgeInsets.only(top: 100,right: 100),
-      padding: EdgeInsets.only(left: 100),
-      child: Container(
-        color: Colors.blue,
-        constraints: BoxConstraints(
-          maxHeight: 100,
-          maxWidth: 100,
-          minHeight: 50,
-          minWidth: 50
-        ),
-    /*const Text("Free Senegal ",
-        textDirection: TextDirection.ltr,
-        style: TextStyle(fontSize: 40,color: Colors.amberAccent),*/
-      ),
-  ));*/
-
-    //Image.asset('assets/images/photo.jpg'),
-      /*Image.network(
-          "https://i.ibb.co/HG70pXB/image4.jpg",
-          height: 150.0,
-      )*/
-
-
-   /* Text.rich(
-      TextSpan(
-        text: 'Bonjour ',
-        style: TextStyle(color: Colors.pink),
-        children: [
-          TextSpan(text: 'chers ',style: TextStyle(color:Colors.amberAccent)),
-          TextSpan(text: 'apprenants',style:TextStyle(color: Colors.blue) )
-        ]
-      ),
-      textDirection: TextDirection.ltr,
-      style: TextStyle(fontSize: 30),
-    ),*/
-
-   /* Text(
-      "Hello word world ",
-     // softWrap: false,
-      maxLines: 3,
-      textDirection: TextDirection.ltr,
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize:180,
-        fontStyle: FontStyle.italic,
-        backgroundColor: Colors.pink,
-        decoration: TextDecoration.underline,
-        decorationColor: Colors.amber,
-        decorationStyle: TextDecorationStyle.solid,
-        decorationThickness: 3
-
-      ),
-    ),*/
-
-
-// Makhmadane LO iNGENIEUR EN INFORMATIQUE
+}
