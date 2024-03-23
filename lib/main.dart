@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_rsx/HomePage.dart';
+import 'package:mobile_rsx/login.dart';
 
 void main() {
 
@@ -9,7 +10,7 @@ void main() {
         theme: ThemeData(
           primarySwatch: Colors.pink
         ),
-        home:HomePage(),
+        home: LoginPage(),
       )
   );
 }

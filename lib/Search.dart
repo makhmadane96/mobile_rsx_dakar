@@ -30,15 +30,12 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pink,
-        centerTitle: true,
-        title: Text("Search Contact"),
-      ),
+
       body: Center(
         child:   Container(
           padding: EdgeInsets.all(15.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               createTextField(nomComplet,TextInputType.text, "Saisir Le nom complet"),
               SizedBox(height: 15),

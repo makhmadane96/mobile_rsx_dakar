@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_rsx/Contact.dart';
+import 'package:mobile_rsx/Profil.dart';
 import 'package:mobile_rsx/Search.dart';
+import 'package:mobile_rsx/login.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _widgetsOptions = [
     Text("Home",style: TextStyle(fontSize:40)),
     SearchPage(),
-    Text("Contact",style: TextStyle(fontSize:40))
+    ProfilPage()
   ];
 
   void _positionPage(int index){
@@ -62,7 +64,27 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.settings,size: 40),
               title: Text('Parametre',style:  TextStyle(color: Colors.black,fontSize: 25)),
               onTap: ()=>{},
+            ),
+            SizedBox(height: 50,),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 15),
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                color: Colors.pink,borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextButton(
+                  onPressed: () =>{
+                    Navigator.push(context,MaterialPageRoute(builder: (_) => LoginPage()))
+                  },
+                  child: Text(
+                    'Deconnexion',
+                    style: TextStyle(color: Colors.white,fontSize: 25),
+
+                  )
+              ),
             )
+
           ],
         ),
       ),
@@ -81,17 +103,17 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Home",
-              backgroundColor: Colors.red
+              backgroundColor: Colors.pink
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.search),
               label: "Search",
-              backgroundColor: Colors.green
+              backgroundColor: Colors.pink
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: "Contact",
-              backgroundColor: Colors.pink
+              label: "Profil",
+              backgroundColor: Colors.deepOrange.shade300
           ),
           
         ],
